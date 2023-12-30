@@ -5,6 +5,7 @@ import Link from "next/link";
 import {Card} from "@/components/ui/card";
 import {cn} from "@/lib/utils";
 import {useRouter} from "next/navigation";
+import {Separator} from "@/components/ui/separator";
 
 const DashboardPage = () => {
     const tools = [
@@ -40,7 +41,7 @@ const DashboardPage = () => {
     const router = useRouter();
 
     return (
-        <div>
+        <div className={"flex flex-col"}>
             <div className={"mb-8 space-y-4"}>
                 <h2 className={"text-2xl md:text-4xl font-bold text-center"}>
                     Explore the power of Schoolist
@@ -49,13 +50,13 @@ const DashboardPage = () => {
                     The best teacher management system for your school.
                 </p>
             </div>
-            <div className={"px-4 md:px-20 lg:px-43 space-y-4"}>
+            <div className={"flex flex-wrap justify-around items-center"}>
                 {tools.map((tool) => (
-                    <Link href={tool.href} key={tool.href}>
+                    <Link href={tool.href} key={tool.href} className={"flex-1 px-4 md:px-26 lg:px-43"}>
                         <Card
                             onClick={() => router.push(tool.href)}
                             key={tool.href}
-                              className={"p-4 border-black/5 flex items-center justify-center justify-between hover:shadow-md transition cursor-pointer"}>
+                            className={"p-4 border-black/5 flex items-center justify-center justify-between hover:shadow-md transition cursor-pointer"}>
 
 
                             <div className={"flex items-center gap-x-4"}>
