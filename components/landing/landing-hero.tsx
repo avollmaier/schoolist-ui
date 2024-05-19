@@ -1,13 +1,10 @@
 "use client"
 
-import {useAuth} from "@clerk/nextjs";
 import TypewriterComponent from "typewriter-effect";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 
 export const LandingHero = () => {
-    const {isSignedIn} = useAuth();
-
 
     return (
         <div className={"text-white font-bold py-36 text-center space-y-5"}>
@@ -33,7 +30,7 @@ export const LandingHero = () => {
                 Manage your school life with ease.
             </div>
             <div>
-                <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+                <Link href={"/dashboard"}>
                     <Button variant="premium" className={"md:text-lg p-4 md:p-6 rounded-full"}>
                         Start managing for free
                     </Button>
