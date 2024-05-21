@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import {
     BookOpenCheck,
@@ -15,6 +15,7 @@ import {
     Users
 } from "lucide-react";
 import {usePathname} from "next/navigation";
+import {UserService} from "@/app/api/userservice";
 
 
 const routes = [
@@ -56,7 +57,20 @@ const routes = [
 
 ];
 
+
 const Sidebar = () => {
+    const [isTeacher, setIsTeacher] = useState(false);
+    const userService = new UserService();
+
+    useEffect(() => {
+        const checkRole = async () => {
+            const result = await userService.isTeacher();
+            setIsTeacher(result);
+            if (result) console.log("Teacher");
+        };
+        checkRole();
+    }, [userService]);
+    
     const pathName = usePathname();
     return (
         <div className={"space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white"}>
